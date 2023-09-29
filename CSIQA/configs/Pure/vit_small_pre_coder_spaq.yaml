@@ -1,0 +1,33 @@
+DATA:
+  DATASET: spaq
+  BATCH_SIZE: 128
+  PATCH_NUM: 10
+  CROP_SIZE: (224,224)
+SET:
+  COUNT: 11125
+MODEL:
+  TYPE: purevit
+  NAME: vit_small_pre
+  DROP_PATH_RATE: 0.0
+  VIT:
+    PATCH_SIZE: 16
+    EMBED_DIM: 384
+    DEPTH: 12
+    NUM_HEADS: 6
+    MLP_RATIO: 4
+    QKV_BIAS: True
+    PRETRAINED: True
+    PRETRAINED_MODEL_PATH: /home/data/hrz/IQA-Data-Eff-IQA/deit_3_small_224_1k.pth
+    PRETRAINED_MODEL_PATH_t: /home/data/hrz/IQA-Data-Eff-IQA/spaq_log/vit_small_pre/NRstudent_spaq_12_21/0/ckpt_epoch_5.pth
+#    PRETRAINED_MODEL_PATH_t: /home/data/hrz/ICCV-IQA/spaq_log/vit_small_pre/NRstudent_spaq_2/0/ckpt_epoch_7.pth
+
+TRAIN:
+  EPOCHS: 9
+  WARMUP_EPOCHS: 3
+  WEIGHT_DECAY: 0.0001
+  BASE_LR: 6.0e-4 # 4096 batch-size
+  WARMUP_LR: 2.0e-7
+  MIN_LR: 2.0e-7
+  LR_SCHEDULER:
+   NAME: step
+   DECAY_EPOCHS: 3

@@ -1,0 +1,45 @@
+DATA:
+  DATASET: live
+  BATCH_SIZE: 12
+  PATCH_NUM: 10
+  CROP_SIZE: (224,224)
+SET:
+  COUNT: 29
+MODEL:
+  TYPE: purevit
+  NAME: vit_small_pre
+  DROP_PATH_RATE: 0.0
+  VIT:
+    PATCH_SIZE: 16
+    EMBED_DIM: 384
+    DEPTH: 12
+    NUM_HEADS: 6
+    MLP_RATIO: 4
+    QKV_BIAS: True
+    PRETRAINED: True
+#    PRETRAINED_MODEL_PATH_t: /home/data/hrz/IQA-Data-Eff-IQA/live_log/vit_small_pre/NRstudent_live_4/0/ckpt_epoch_10.pth
+#    PRETRAINED_MODEL_PATH_t: /home/data/hrz/IQA-Data-Eff-IQA/live_log/vit_small_pre/NRstudent_live_0102_2/8/ckpt_epoch_7.pth
+    PRETRAINED_MODEL_PATH_t: /home/data/hrz/ICCV-IQA/live_log/vit_small_pre/NRstudent_live_e-5_e-7/5/ckpt_epoch_7.pth
+#    PRETRAINED_MODEL_PATH_t: /home/data/hrz/ACM_MM/live_log/vit_small_pre/0402/0/ckpt_epoch_8.pth
+#    PRETRAINED_MODEL_PATH: /home/data/hrz/ACM_MM/live_log/vit_small_pre/0402_1/19/ckpt_epoch_9.pth
+    PRETRAINED_MODEL_PATH: /home/data/hrz/NIPS_supplementary/NIPS_code/live_log/vit_small_pre/NRstudent_live/0/ckpt_model.pth
+
+#    /home/data/hrz/IQA-Data-Eff-IQA/deit_3_small_224_1k.pth
+    PRETRAINED_MODEL_PATH_NAR_teacher: /huome/Xdong_Li/NR-IQA-IJCAJ/IQA-Data-Eff-IQA/deit_3_small_224_1k.pth
+    PRETRAINED_MODEL_PATH_FR_teahcer: /home/data/hrz/IQA-Data-Eff-IQA/deit_3_small_224_1k.pth
+    #/home/Xudong_Li/NR-IQA-IJCAJ/IQA-Data-Eff-IQA/ckpt_epoch_14_NAR.pth
+#    /home/xxxy/NR-IQA-IJCAJ/IQA-Data-Eff-IQA/logxx/vit_small_pre/vit_warm_decoder_j6_224_live_posbiHW/0/ckpt_epoch_12.pth
+#    /home/xxxy/NR-IQA-IJCAJ/IQA-Data-Eff-IQA/deit_3_small_224_1k.pth
+#    C:/Users/76105/Desktop/mac/Data-Eff-IQA/deit_3_small_224_1k.pth
+#    14_NAR.pth是FR没有从25*25到14*14跑的
+
+TRAIN:
+  EPOCHS: 10
+  WARMUP_EPOCHS: 4
+  WEIGHT_DECAY: 0.05
+  BASE_LR: 1.0e-4 # 4096 batch-size
+  WARMUP_LR: 2.0e-7
+  MIN_LR: 2.0e-7
+  LR_SCHEDULER:
+   NAME: step
+   DECAY_EPOCHS: 4
